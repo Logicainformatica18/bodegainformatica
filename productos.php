@@ -1,6 +1,6 @@
 <?php
 include("head.php");
-include('php/functionproductos.php');
+include('functionproductos.php');
 ?>
 
 <div class="content-header">

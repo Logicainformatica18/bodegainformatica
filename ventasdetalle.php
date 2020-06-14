@@ -1,7 +1,7 @@
 <?php
 include("head.php");
-include('php/functionventasdetalle.php');
-include('php/functionproductos.php');
+include('functionventasdetalle.php');
+include('functionproductos.php');
 $codigo = isset($_SESSION["ventas"]) ? $_SESSION["ventas"] : "";
 //echo $codigo;
 ?>

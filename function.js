@@ -4,7 +4,7 @@ function personInsert() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "insert");
     $.ajax({
-        url: "php/functionperson.php",
+        url: "functionperson.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -25,7 +25,7 @@ function personDelete(codigo) {
         formData.append("metodo", "delete");
         formData.append("codigo", codigo);
         $.ajax({
-            url: "php/functionperson.php",
+            url: "functionperson.php",
             type: "POST",
             dataType: "HTML",
             data: formData,
@@ -45,7 +45,7 @@ function personSelectOne(codigo) {
     formData.append("metodo", "select");
     formData.append("codigo", codigo);
     $.ajax({
-        url: "php/functionperson.php",
+        url: "functionperson.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -64,7 +64,7 @@ function personSearch() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "search");
     $.ajax({
-        url: "php/functionperson.php",
+        url: "functionperson.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -84,7 +84,7 @@ function personUpdate() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "update");
     $.ajax({
-        url: "php/functionperson.php",
+        url: "functionperson.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -102,7 +102,7 @@ function personLogin() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "login");
     $.ajax({
-        url: "php/functionperson.php",
+        url: "functionperson.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -121,7 +121,7 @@ function personChangePassword() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "changePassword");
     $.ajax({
-        url: "php/functionperson.php",
+        url: "functionperson.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -141,7 +141,7 @@ function personFiltro() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "filtro");
     $.ajax({
-        url: "php/functionperson.php",
+        url: "functionperson.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -160,7 +160,7 @@ function personSearch2() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "search2");
     $.ajax({
-        url: "php/functionperson.php",
+        url: "functionperson.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -179,7 +179,7 @@ function categoriasInsert() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "insert");
     $.ajax({
-        url: "php/functioncategorias.php",
+        url: "functioncategorias.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -200,7 +200,7 @@ function categoriasDelete(codigo) {
         formData.append("metodo", "delete");
         formData.append("codigo", codigo);
         $.ajax({
-            url: "php/functioncategorias.php",
+            url: "functioncategorias.php",
             type: "POST",
             dataType: "HTML",
             data: formData,
@@ -221,7 +221,7 @@ function categoriasSelectOne(codigo) {
     formData.append("metodo", "select");
     formData.append("codigo", codigo);
     $.ajax({
-        url: "php/functioncategorias.php",
+        url: "functioncategorias.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -240,7 +240,7 @@ function categoriasUpdate() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "update");
     $.ajax({
-        url: "php/functioncategorias.php",
+        url: "functioncategorias.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -259,7 +259,7 @@ function proveedoresInsert() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "insert");
     $.ajax({
-        url: "php/functionproveedores.php",
+        url: "functionproveedores.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -280,7 +280,7 @@ function proveedoresDelete(codigo) {
         formData.append("metodo", "delete");
         formData.append("codigo", codigo);
         $.ajax({
-            url: "php/functionproveedores.php",
+            url: "functionproveedores.php",
             type: "POST",
             dataType: "HTML",
             data: formData,
@@ -301,7 +301,7 @@ function proveedoresSelectOne(codigo) {
     formData.append("metodo", "select");
     formData.append("codigo", codigo);
     $.ajax({
-        url: "php/functionproveedores.php",
+        url: "functionproveedores.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -320,7 +320,7 @@ function proveedoresUpdate() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "update");
     $.ajax({
-        url: "php/functionproveedores.php",
+        url: "functionproveedores.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -341,7 +341,7 @@ function productosInsert() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "insert");
     $.ajax({
-        url: "php/functionproductos.php",
+        url: "functionproductos.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -362,7 +362,7 @@ function productosDelete(codigo) {
         formData.append("metodo", "delete");
         formData.append("codigo", codigo);
         $.ajax({
-            url: "php/functionproductos.php",
+            url: "functionproductos.php",
             type: "POST",
             dataType: "HTML",
             data: formData,
@@ -383,7 +383,7 @@ function productosSelectOne(codigo) {
     formData.append("metodo", "select");
     formData.append("codigo", codigo);
     $.ajax({
-        url: "php/functionproductos.php",
+        url: "functionproductos.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -402,7 +402,7 @@ function productosUpdate() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "update");
     $.ajax({
-        url: "php/functionproductos.php",
+        url: "functionproductos.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -422,7 +422,7 @@ function ventasInsert() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "insert");
     $.ajax({
-        url: "php/functionventas.php",
+        url: "functionventas.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -443,7 +443,7 @@ function ventasDelete(codigo) {
         formData.append("metodo", "delete");
         formData.append("codigo", codigo);
         $.ajax({
-            url: "php/functionventas.php",
+            url: "functionventas.php",
             type: "POST",
             dataType: "HTML",
             data: formData,
@@ -464,7 +464,7 @@ function ventasSelectOne(codigo) {
     formData.append("metodo", "select");
     formData.append("codigo", codigo);
     $.ajax({
-        url: "php/functionventas.php",
+        url: "functionventas.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -483,7 +483,7 @@ function ventasUpdate() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "update");
     $.ajax({
-        url: "php/functionventas.php",
+        url: "functionventas.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -503,7 +503,7 @@ function ventasDetalle(codigo) {
     formData.append("metodo", "detalle");
     formData.append("codigo", codigo);
     $.ajax({
-        url: "php/functionventas.php",
+        url: "functionventas.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -521,7 +521,7 @@ function ventasdetalleInsert(){
     // .append podemos agregar parametros al formData
     formData.append("metodo", "insert");
     $.ajax({
-        url: "php/functionventasdetalle.php",
+        url: "functionventasdetalle.php",
         type: "POST",
         dataType: "HTML",
         data: formData,
@@ -541,7 +541,7 @@ function ventasdetalleDelete(codigo) {
         formData.append("metodo", "delete");
         formData.append("codigo", codigo);
         $.ajax({
-            url: "php/functionventasdetalle.php",
+            url: "functionventasdetalle.php",
             type: "POST",
             dataType: "HTML",
             data: formData,
@@ -625,7 +625,7 @@ function productosSearch2() {
     // .append podemos agregar parametros al formData
     formData.append("metodo", "search2");
     $.ajax({
-        url: "php/functionproductos.php",
+        url: "functionproductos.php",
         type: "POST",
         dataType: "HTML",
         data: formData,

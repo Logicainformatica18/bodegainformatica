@@ -1,7 +1,7 @@
  <?php
   class connection{
    //Configuracion de la conexion a base de datos
-   protected $bd_host = "localhost"; 
+   protected $bd_host = "127.0.0.1"; 
    protected $bd_usuario = "root"; 
    protected $bd_password = ""; 
    protected $bd_base = "bodega";

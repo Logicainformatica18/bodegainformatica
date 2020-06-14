@@ -2,7 +2,7 @@
 if (!class_exists("session")) {
     include("session.php");
   }
-include 'php/functionperson.php';
+include 'functionperson.php';
 $administrador = new person("");
 $administrador->personValidar();
 $login = isset($_SESSION["login"]) ? $_SESSION["login"] : "";

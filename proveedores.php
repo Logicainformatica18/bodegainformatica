@@ -1,6 +1,6 @@
 <?php
 include("head.php");
-include('php/functionproveedores.php');
+include('functionproveedores.php');
 ?>
 <div class="content-header">
     <div class="container-fluid">

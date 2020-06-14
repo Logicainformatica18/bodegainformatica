@@ -1,6 +1,6 @@
 <?php
 include("head.php");
-include('php/functioncategorias.php');
+include('functioncategorias.php');
 ?>
 
 
