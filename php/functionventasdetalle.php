@@ -2,25 +2,27 @@
 if (!class_exists("connection")) {
   include("conexion.php");
 }
+if (!class_exists("session")) {
+  include("../session.php");
+}
 //variables POST
-$ventas = isset($_SESSION["ventas"]) ? $_SESSION["ventas"] : "";
+$ventas = isset($_GET["ventas"]) ? $_GET["ventas"] : "";
 $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : "";
 $codigo = isset($_POST['codigo']) ? $_POST['codigo'] : "";
 $cantidad = isset($_POST['cantidad']) ? $_POST['cantidad'] : "";
 //ESTA VARIABLE ES PARA AGREGAR A UNA TABLA DETALLE
 $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : "";
+$ventas = isset($_SESSION["ventas"]) ? $_SESSION["ventas"] : "";
 
+class ventasdetalle extends connection{
 
-
-
-
-class ventasdetalle extends connection
-{
-
+public $id = "";  
+public function setVentasdetalle($id){
+  return $this->id=$id;
+}
 
   public function ventasdetalleSelect()
   {
-
     $ventas = isset($_SESSION["ventas"]) ? $_SESSION["ventas"] : "";
     //consulta todos los empleados
     $query = "SELECT vd.idventas_detalle,p.nombreproducto,p.preciounitario,vd.cantidad,round(vd.cantidad * p.preciounitario,2) as subtotal 
@@ -108,8 +110,6 @@ class ventasdetalle extends connection
   }
   public function ventasdetalleDelete($codigo)
   {
-    session_start();
-    //registra los datos del empleados
     $sql = "DELETE FROM ventas_detalle where idventas_detalle='$codigo';";
     if (mysqli_query($this->open(), $sql)) {
     } else {
@@ -118,7 +118,6 @@ class ventasdetalle extends connection
   }
   public function ventasdetalleInsert($nombre, $cantidad)
   {
-    session_start();
     $ventas = isset($_SESSION["ventas"]) ? $_SESSION["ventas"] : "";
     $sql = mysqli_query($this->open(), "SELECT idproducto from productos where nombreproducto='$nombre'");
     $r = mysqli_fetch_assoc($sql);
@@ -174,6 +173,7 @@ idcategoria='$categoria',idproveedor='$proveedor' where idproducto='$codigo'";
 
 }
 
+
 $ventasdetalle = new ventasdetalle();
 if ($metodo == "delete") {
   $ventasdetalle->ventasdetalleDelete($codigo);
@@ -184,3 +184,4 @@ if ($metodo == "delete") {
 } elseif ($metodo == "update") {
   $ventasdetalle->ventasdetalleUpdate($codigo, $nombre, $preciounitario, $preciopaquete, $unidadesenstock, $categoria, $proveedor);
 } 
+

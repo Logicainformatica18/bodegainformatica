@@ -2,6 +2,9 @@
 if (!class_exists("connection")) {
   include("conexion.php");
 }
+if (!class_exists("session")) {
+  include("../session.php");
+}
 //variables POST
 $codigo = isset($_POST['codigo']) ? $_POST['codigo'] : "";
 $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : "";
@@ -20,7 +23,6 @@ $criterio = isset($_POST['criterio']) ? $_POST['criterio'] : "";
 
 class ventas extends connection
 {
-
 
   public function ventasSelect()
   {
@@ -110,9 +112,8 @@ class ventas extends connection
   }
   public function ventasDetalle($codigo)
   {
-    session_start();
-    $_SESSION["ventas"] = $codigo;
-    echo "<script>	window.location.href='ventasdetalle.php';</script>";
+     $_SESSION["ventas"] = $codigo;
+     echo "<script>	window.location.href='ventasdetalle.php';</script>";
   }
 }
 

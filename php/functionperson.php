@@ -1,8 +1,15 @@
 <?php
-	if (!isset($_SESSION)) {
-			session_start();
+if (!class_exists("session")) {
+    class session {
+		public function session_inicio(){
+			return session_start();
 		}
-		if (!class_exists("connection"))
+	}
+	
+	$session=new session();
+	$session->session_inicio();
+  }
+if (!class_exists("connection"))
 		{
 		  include ("conexion.php");
 		}
@@ -330,7 +337,7 @@ class person extends connection
 	}
 	public function personLogin($login, $password, $cargo)
 	{
-	//	session_start();
+	//	
 		// Consulta enviada a la base de datos
 		$query = "SELECT p.dni ,p.password,c.nombre as cargo from person p inner join cargo c on p.cargoid=c.cargoid WHERE  dni  = '$login' and password='$password' and c.cargoid='$cargo';";
 		$result = mysqli_query($this->open(), $query);
@@ -361,7 +368,7 @@ class person extends connection
 	}
 	public function personChangePassword($password, $new_password, $repetir_password)
 	{
-		session_start();
+		
 		$dni = $_SESSION["login"];
 		$password_sesion = $_SESSION["password"];
 

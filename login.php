@@ -1,4 +1,7 @@
 <?php
+if (!class_exists("session")) {
+   include "session.php";
+  }
 include 'php/functionperson.php';
 ?>
 <!DOCTYPE html>

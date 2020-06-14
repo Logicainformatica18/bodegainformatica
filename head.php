@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!class_exists("session")) {
+    include("session.php");
+  }
 include 'php/functionperson.php';
 $administrador = new person("");
 $administrador->personValidar();

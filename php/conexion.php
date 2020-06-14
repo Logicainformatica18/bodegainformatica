@@ -1,11 +1,11 @@
  <?php
- class connection{
+  class connection{
    //Configuracion de la conexion a base de datos
    protected $bd_host = "localhost"; 
    protected $bd_usuario = "root"; 
    protected $bd_password = ""; 
    protected $bd_base = "bodega";
-   protected $con; 
+   protected $con;
    public function open(){
 
  $this->con = mysqli_connect($this->bd_host, $this->bd_usuario, $this->bd_password,$this->bd_base);
