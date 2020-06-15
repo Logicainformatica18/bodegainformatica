@@ -3,7 +3,7 @@ if (!class_exists("connection")) {
   include("conexion.php");
 }
 if (!class_exists("session")) {
-  include("../session.php");
+  include("session.php");
 }
 //variables POST
 $codigo = isset($_POST['codigo']) ? $_POST['codigo'] : "";
