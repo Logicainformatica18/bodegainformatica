@@ -89,7 +89,7 @@ class categorias extends connection
     if (mysqli_query($this->open(), $sql)) {
     } else {
     }
-    $this->categoriasSelect();
+  $this->categoriasSelect();
   }
   public function categoriasInsert($nombre, $descripcion)
   {

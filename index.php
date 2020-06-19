@@ -162,6 +162,9 @@ $administrador->personSelectOne2($_SESSION["login"]);
 </div>
 <p></p>
 
+
+
+wdwdwdddddddddddddddddddddddddddddddddddddd
 <!-- Modal Structure -->
 
 
