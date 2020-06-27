@@ -559,6 +559,37 @@ function ventasdetalleDelete(codigo) {
 
 
 
+function companiasenvioDelete(codigo) {
+    //validamos en este if si queremos eliminar con la confirmación
+    if (confirm("¿Esta seguro de querer eliminar?")) {
+        var formData = new FormData(document.getElementById("companiasenvio"));
+        // .append podemos agregar parametros al formData
+        formData.append("metodo", "delete");
+        formData.append("codigo", codigo);
+        $.ajax({
+            url: "functioncompaniasenvio.php",
+            type: "POST",
+            dataType: "HTML",
+            data: formData,
+            asycn: false, //el error que cometí de sintaxis, es async
+            cache: false,
+            contentType: false,
+            processData: false
+        }).done(function (echo) {
+            $("#resultado").html(echo);
+        });
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 function envioWhatsapp(cliente){
 
@@ -639,6 +670,23 @@ function productosSearch2() {
 }
 
      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function f1() {
         var cantidad = ventasdetalle.cantidad.value;
         if(parseFloat(ventasdetalle.cantidad.value)==0){
