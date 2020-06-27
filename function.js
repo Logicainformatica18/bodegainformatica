@@ -581,9 +581,62 @@ function companiasenvioDelete(codigo) {
     }
 }
 
+function companiasenvioInsert(){
+    var formData = new FormData(document.getElementById("companiasenvio"));
+    // .append podemos agregar parametros al formData
+    formData.append("metodo", "insert");
+    $.ajax({
+        url: "functioncompaniasenvio.php",
+        type: "POST",
+        dataType: "HTML",
+        data: formData,
+        //  asycn:false, //el error que cometí de sintaxis, es async
+        cache: false,
+        contentType: false,
+        processData: false
+    }).done(function (echo) {
+        $("#resultado").html(echo);
+    });
+}
+function companiasenvioSelectOne(codigo) {
 
+    var formData = new FormData(document.getElementById("companiasenvio"));
+    // .append podemos agregar parametros al formData
+    formData.append("metodo", "select");
+    formData.append("codigo", codigo);
+    $.ajax({
+        url: "functioncompaniasenvio.php",
+        type: "POST",
+        dataType: "HTML",
+        data: formData,
+        asycn: false, //el error que cometí de sintaxis, es async
+        cache: false,
+        contentType: false,
+        processData: false
+    }).done(function (echo) {
+        $("#resultado").html(echo);
+    });
 
+}
 
+function companiasenvioUpdate() {
+
+    var formData = new FormData(document.getElementById("companiasenvio"));
+    // .append podemos agregar parametros al formData
+    formData.append("metodo", "update");
+    $.ajax({
+        url: "functioncompaniasenvio.php",
+        type: "POST",
+        dataType: "HTML",
+        data: formData,
+        //  asycn:false, //el error que cometí de sintaxis, es async
+        cache: false,
+        contentType: false,
+        processData: false
+    }).done(function (echo) {
+        $("#resultado").html(echo);
+    });
+}
 
 
 
@@ -648,6 +701,26 @@ function ventasdetalleNuevo() {
     //limpia por completo el formulario usando jquery
     $("#ventasdetalle")[0].reset();
 }
+
+function companiasenvioEditar() {
+    companiasenvio.btn.disabled = true;
+    companiasenvio.nuevo.disabled = true;
+    companiasenvio.modificar.disabled = false;
+  
+}
+function companiasenvioNuevo() {
+    companiasenvio.btn.disabled = false;
+    companiasenvio.nuevo.disabled = false;
+    companiasenvio.modificar.disabled = true;
+    //limpia por completo el formulario usando jquery
+    $("#companiasenvio")[0].reset();
+}
+
+
+
+
+
+
 
 
 function productosSearch2() {

@@ -176,7 +176,15 @@ $r = mysqli_fetch_assoc($query);
                                 </p>
                             </a>
                         </li>
-
+                        <li class="nav-item has-treeview">
+                            <a href="companiasenvio.php" class="nav-link">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Companias Envio
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                        </li>
 
 
 

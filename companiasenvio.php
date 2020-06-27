@@ -40,7 +40,7 @@ include('functioncompaniasenvio.php');
                     <div class="col s12 l6">
                         <input type="hidden" name="codigo">
                         Nombre <input name="nombrecompania" type="text" class="form-control" />
-                        Teléfono <input name="telefono" type="number" class="form-control" />
+                        Teléfono <input name="telefono" type="text" class="form-control" />
                        
             
                     </div>

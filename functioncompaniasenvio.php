@@ -6,7 +6,7 @@ if (!class_exists("connection")) {
 $codigo = isset($_POST['codigo']) ? $_POST['codigo'] : "";
 $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : "";
 
-$nombre = isset($_POST['nombre']) ? $_POST['nombre'] : "";
+$nombrecompania = isset($_POST['nombrecompania']) ? $_POST['nombrecompania'] : "";
 $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : "";
 
 //filtro
@@ -54,7 +54,7 @@ class companiasenvio extends connection
                       $companiasenvioid = $row[0];
                       echo "<td>" . $row[0] . "</td>";
                       echo "<td>" . $row[1] . "</td>";
-                      echo "<td>s/" . $row[2] . "</td>";
+                      echo "<td>" . $row[2] . "</td>";
                       
                     ?>
                       <!-- Button trigger modal -->
@@ -87,52 +87,36 @@ class companiasenvio extends connection
     }
     $this->companiasenvioSelect();
   }
-  public function companiasenvioInsert($nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor)
+  public function companiasenvioInsert($nombrecompania, $telefono)
   {
     //registra los datos del companiasenvio
-    $sql = "INSERT INTO companiasenvio (nombreproducto,preciounitario,preciopaquete,unidadesporpaquete,unidadesenstock,idcategoria,idproveedor) VALUES ('$nombre',$preciounitario,$preciopaquete,$unidadesporpaquete,$unidadesenstock,'$categoria','$proveedor')";
+    $sql = "INSERT INTO companiasenvio (nombrecompania,telefono) VALUES ('$nombrecompania','$telefono')";
     mysqli_query($this->open(), $sql) or die('Error. ' . mysqli_error($sql));
     $this->companiasenvioSelect();
   }
   public function companiasenvioSelectOne($codigo)
   {
-    $sql = mysqli_query($this->open(), "SELECT p.IdProducto, p.NombreProducto,p.PrecioUnitario,p.preciopaquete,p.unidadesporpaquete,p.UnidadesEnStock,c.IdCategoria,pro.IdProveedor from
-    companiasenvio p inner join categorias c inner join proveedores pro on p.IdCategoria=c.IdCategoria and
-    p.IdProveedor=pro.IdProveedor where idProducto ='$codigo'");
+    $sql = mysqli_query($this->open(), "SELECT * from companiasenvio where idcompaniaenvio ='$codigo'");
     $r = mysqli_fetch_assoc($sql);
-    $codigo = $r["IdProducto"];
-    $nombre = $r["NombreProducto"];
-    $preciounitario = $r["PrecioUnitario"];
-    $preciopaquete = $r["preciopaquete"];
-    $unidadesporpaquete = $r["unidadesporpaquete"];
-    $unidadesenstock = $r["UnidadesEnStock"];
-    $categoria = $r["IdCategoria"];
-    $proveedor = $r["IdProveedor"];
+    $codigo = $r["IdCompaniaEnvio"];
+    $nombrecompania = $r["NombreCompania"];
+    $telefono = $r["Telefono"];
+   
     echo "<script>
       companiasenvio.codigo.value='$codigo';
-      companiasenvio.nombre.value='$nombre';
-      companiasenvio.preciounitario.value='$preciounitario';
-      companiasenvio.preciopaquete.value='$preciopaquete';
-      companiasenvio.unidadesporpaquete.value='$unidadesporpaquete';
-      companiasenvio.unidadesenstock.value='$unidadesenstock';
-      companiasenvio.categoria.value='$categoria';
-      companiasenvio.proveedor.value='$proveedor';
+      companiasenvio.nombrecompania.value='$nombrecompania';
+      companiasenvio.telefono.value='$telefono';
       </script>";
     $this->companiasenvioSelect();
   }
-  public function companiasenvioUpdate($codigo, $nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor)
+  public function companiasenvioUpdate($codigo,$nombrecompania,$telefono)
   {
-    $sql = "UPDATE companiasenvio set nombreproducto='$nombre' ,preciounitario='$preciounitario',preciopaquete='$preciopaquete',unidadesporpaquete='$unidadesporpaquete',unidadesenstock='$unidadesenstock',
-idcategoria='$categoria',idproveedor='$proveedor' where idproducto='$codigo'";
+    $sql = "UPDATE companiasenvio set nombrecompania='$nombrecompania' ,telefono='$telefono' where idcompaniaenvio='$codigo'";
     mysqli_query($this->open(), $sql) or die('Error. ' . mysqli_error($sql));
     echo "<script>	
     companiasenvio.codigo.value='$codigo';
-    companiasenvio.nombre.value='$nombre';
-    companiasenvio.preciounitario.value='$preciounitario';
-    companiasenvio.preciopaquete.value='$preciopaquete';
-    companiasenvio.unidadesenstock.value='$unidadesenstock';
-    companiasenvio.categoria.value='$categoria';
-    companiasenvio.proveedor.value='$proveedor';
+    companiasenvio.nombrecompania.value='$nombrecompania';
+    companiasenvio.telefono.value='$telefono';
         </script>";
     $this->companiasenvioSelect();
   }
@@ -158,9 +142,9 @@ $companiasenvio = new companiasenvio();
 if ($metodo == "delete") {
   $companiasenvio->companiasenvioDelete($codigo);
 } elseif ($metodo == "insert") {
-  $companiasenvio->companiasenvioInsert($nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor);
+  $companiasenvio->companiasenvioInsert($nombrecompania, $telefono);
 } elseif ($metodo == "select") {
   $companiasenvio->companiasenvioSelectOne($codigo);
 } elseif ($metodo == "update") {
-  $companiasenvio->companiasenvioUpdate($codigo, $nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor);
+  $companiasenvio->companiasenvioUpdate($codigo,$nombrecompania,$telefono);
 }
