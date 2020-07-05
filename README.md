@@ -1,4 +1,4 @@
-# BODEGA INFORMÁTICA
+#  BODEGA INFORMÁTICA 
 Este proyecto está basado en la plantilla de administración de [Admin LTE3](https://adminlte.io/themes/v3/ "Admin LTE3")
 ## Instalación
 ### 1 Paso
@@ -30,8 +30,8 @@ Este proyecto está basado en la plantilla de administración de [Admin LTE3](ht
 ![](https://scontent.flim18-1.fna.fbcdn.net/v/t1.0-9/s960x960/106794608_1002440216853617_6501992212619599794_o.png?_nc_cat=102&_nc_sid=8024bb&_nc_eui2=AeESNYI4gSlb7VlNS0WgAIfbcm8HgUXZP7BybweBRdk_sKN7N481UgLFQRDYyDkvi8z56zAdjmfCXlKcBZ3QS8i4&_nc_ohc=6L4qd1WmNXUAX_2hWxl&_nc_ht=scontent.flim18-1.fna&oh=9924f890b5e6f19cd34335f875ebed9d&oe=5F268733	)
 ## Contribución
 1. Crea un Fork del repositorio
-2. Clonar en tu maquina mediante git clone https://github.com/YOUR_USERNAME/AdminLTE.git
-3. Crar una nueva rama
+2. Clonar en tu maquina mediante git clone https://github.com/Logicainformatica18/bodegainformatica.git
+3. Crear una nueva rama
 4. Realiza tus cambios
 5. Manda tu pull request
 ## Licencia
