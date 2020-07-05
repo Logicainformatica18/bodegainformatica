@@ -20,3 +20,5 @@ Este proyecto está basado en la plantilla de administración de [Admin LTE3](ht
 3. Crar una nueva rama
 4. Realiza tus cambios
 5. Manda tu pull request
+## Licencia
+MIT
