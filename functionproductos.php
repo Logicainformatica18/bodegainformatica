@@ -13,6 +13,14 @@ $unidadesporpaquete = isset($_POST['unidadesporpaquete']) ? $_POST['unidadesporp
 $unidadesenstock = isset($_POST['unidadesenstock']) ? $_POST['unidadesenstock'] : "";
 $categoria = isset($_POST['categoria']) ? $_POST['categoria'] : "";
 $proveedor = isset($_POST['proveedor']) ? $_POST['proveedor'] : "";
+
+
+$foto = isset($_FILES['foto']['tmp_name']) ? $_FILES['foto']['tmp_name'] : "";
+//comprobamos si hay una foto o no
+if ($foto != "") {
+  //Convertimos la información de la imagen en binario para insertarla en la BBDD
+  $foto = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
+}
 //filtro
 
 
@@ -25,7 +33,7 @@ class productos extends connection
   public function productosSelect()
   {
     //consulta todos los empleados
-    $sql = mysqli_query($this->open(), "SELECT p.IdProducto, p.NombreProducto,p.PrecioUnitario,p.preciopaquete,p.unidadesporpaquete,p.UnidadesEnStock from
+    $sql = mysqli_query($this->open(), "SELECT p.IdProducto, p.NombreProducto,p.PrecioUnitario,p.preciopaquete,p.unidadesporpaquete,p.UnidadesEnStock , p.foto from
     productos p inner join categorias c inner join proveedores pro on p.IdCategoria=c.IdCategoria and
     p.IdProveedor=pro.IdProveedor;");
 ?>
@@ -50,6 +58,7 @@ class productos extends connection
                       <th>Precio x Paquete</th>
                       <th>Unidades x Paquete</th>
                       <th>Stock</th>
+                      <th>Foto</th>
                       <th>Modificar</th>
                       <th>Eliminar</th>
                     </tr>
@@ -64,6 +73,14 @@ class productos extends connection
                       echo "<td>" . $row[3] . "</td>";
                       echo "<td>" . $row[4] . "</td>";
                       echo "<td>" . $row[5] . "</td>";
+              
+                         // decodificar base 64
+                         $foto = base64_encode($row[6]);
+                         if ($foto == "") {
+                           echo "<td height='50'>No Disponible</td>";
+                         } else {
+                           echo "<td height='50'><img src='data:image/jpeg;base64,$foto' width='50'height='50'></td>";
+                         }
                     ?>
                       <!-- Button trigger modal -->
                       <td><button type="button" class="btn btn-primary note-icon-pencil" data-toggle="modal" data-target="#exampleModal" onclick="productosSelectOne('<?php echo $productosid ?>'); productosEditar();  return false"></button></td>
@@ -81,6 +98,7 @@ class productos extends connection
                       <th>Precio x Paquete</th>
                       <th>Unidades x Paquete</th>
                       <th>Stock</th>
+                      <th>Foto</th>
                       <th>Modificar</th>
                       <th>Eliminar</th>
                     </tr>
@@ -105,16 +123,17 @@ class productos extends connection
     }
     $this->productosSelect();
   }
-  public function productosInsert($nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor)
+  public function productosInsert($nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor,$foto)
   {
     //registra los datos del productos
-    $sql = "INSERT INTO productos (nombreproducto,preciounitario,preciopaquete,unidadesporpaquete,unidadesenstock,idcategoria,idproveedor) VALUES ('$nombre',$preciounitario,$preciopaquete,$unidadesporpaquete,$unidadesenstock,'$categoria','$proveedor')";
-    mysqli_query($this->open(), $sql) or die('Error. ' . mysqli_error($sql));
+    $sql = "INSERT INTO productos (nombreproducto,preciounitario,preciopaquete,unidadesporpaquete,unidadesenstock,idcategoria,idproveedor,foto) VALUES ('$nombre',$preciounitario,$preciopaquete,$unidadesporpaquete,$unidadesenstock,'$categoria','$proveedor','$foto')";
+  
+mysqli_query($this->open(), $sql) or die('Error. ' . mysqli_error($sql));
     $this->productosSelect();
   }
   public function productosSelectOne($codigo)
   {
-    $sql = mysqli_query($this->open(), "SELECT p.IdProducto, p.NombreProducto,p.PrecioUnitario,p.preciopaquete,p.unidadesporpaquete,p.UnidadesEnStock,c.IdCategoria,pro.IdProveedor from
+    $sql = mysqli_query($this->open(), "SELECT p.IdProducto, p.NombreProducto,p.PrecioUnitario,p.preciopaquete,p.unidadesporpaquete,p.UnidadesEnStock,c.IdCategoria,pro.IdProveedor,p.foto from
     productos p inner join categorias c inner join proveedores pro on p.IdCategoria=c.IdCategoria and
     p.IdProveedor=pro.IdProveedor where idProducto ='$codigo'");
     $r = mysqli_fetch_assoc($sql);
@@ -126,6 +145,7 @@ class productos extends connection
     $unidadesenstock = $r["UnidadesEnStock"];
     $categoria = $r["IdCategoria"];
     $proveedor = $r["IdProveedor"];
+    $foto = base64_encode($r["foto"]);
     echo "<script>
       productos.codigo.value='$codigo';
       productos.nombre.value='$nombre';
@@ -135,13 +155,14 @@ class productos extends connection
       productos.unidadesenstock.value='$unidadesenstock';
       productos.categoria.value='$categoria';
       productos.proveedor.value='$proveedor';
+      productos.fotografia.src='data:image/jpeg;base64,$foto';
       </script>";
     $this->productosSelect();
   }
-  public function productosUpdate($codigo, $nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor)
+  public function productosUpdate($codigo, $nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor,$foto)
   {
     $sql = "UPDATE productos set nombreproducto='$nombre' ,preciounitario='$preciounitario',preciopaquete='$preciopaquete',unidadesporpaquete='$unidadesporpaquete',unidadesenstock='$unidadesenstock',
-idcategoria='$categoria',idproveedor='$proveedor' where idproducto='$codigo'";
+idcategoria='$categoria',idproveedor='$proveedor' ,foto ='$foto' where idproducto='$codigo'";
     mysqli_query($this->open(), $sql) or die('Error. ' . mysqli_error($sql));
     echo "<script>	
     productos.codigo.value='$codigo';
@@ -151,6 +172,7 @@ idcategoria='$categoria',idproveedor='$proveedor' where idproducto='$codigo'";
     productos.unidadesenstock.value='$unidadesenstock';
     productos.categoria.value='$categoria';
     productos.proveedor.value='$proveedor';
+    productos.fotografia.src='data:image/jpeg;base64,$foto';
         </script>";
     $this->productosSelect();
   }
@@ -176,9 +198,9 @@ $productos = new productos();
 if ($metodo == "delete") {
   $productos->productosDelete($codigo);
 } elseif ($metodo == "insert") {
-  $productos->productosInsert($nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor);
+  $productos->productosInsert($nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor,$foto);
 } elseif ($metodo == "select") {
   $productos->productosSelectOne($codigo);
 } elseif ($metodo == "update") {
-  $productos->productosUpdate($codigo, $nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor);
+  $productos->productosUpdate($codigo, $nombre, $preciounitario, $preciopaquete, $unidadesporpaquete, $unidadesenstock, $categoria, $proveedor,$foto);
 }

@@ -70,7 +70,27 @@ include('functionproductos.php');
 
                             ?>
                         </select>
+                        <br>
+                        <div class="form-group row">
+                           Fotografía
+                           <div class="col-sm-1"></div>
+                            <div class="btn btn-default btn-file col-9">
+                                <i class="fas fa-paperclip"></i> Subir
+                                <input type='file' id="imgInp" name="foto" onchange="readImage(this);">
+                            </div>
+                         
+                            <div class="col-sm-12">
+                                <br>
+                                <img id="blah"name="fotografia" src="https://via.placeholder.com/150" alt="Tu imagen" class="img-bordered" width="50%">
+                            </div>
+                        </div>
+
+
+
                     </div>
+
+
+
             </div>
             <div class="modal-footer">
                 <input type="submit" name="nuevo" value="Nuevo" class="btn btn-secondary" onclick="productosNuevo(); return false" />

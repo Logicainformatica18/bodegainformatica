@@ -887,3 +887,19 @@ else if(cantidad.length==3){
 function borrartodo(){ 
    ventasdetalle.cantidad.value=0;
 }  
+
+
+
+
+
+
+function readImage(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+ 
